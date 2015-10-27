@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class DocumentStore\Dropbox\DropboxManager</title>
+
+	<link rel="stylesheet" href="resources/style.css?c2f33731c1948fbed7c333554678bfa68d4817da">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+				<li class="active">
+					<a href="namespace-DocumentStore.html">
+						DocumentStore<span></span>
+					</a>
+
+						<ul>
+				<li class="active">
+					<a href="namespace-DocumentStore.Dropbox.html">
+						Dropbox					</a>
+
+						</li>
+				<li>
+					<a href="namespace-DocumentStore.Models.html">
+						Models					</a>
+
+						</li>
+							</ul></li>
+				<li>
+					<a href="namespace-None.html">
+						None					</a>
+
+						</li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-DocumentStore.Dropbox.DropboxHTTPHandler.html">DropboxHTTPHandler</a></li>
+				<li class="active"><a href="class-DocumentStore.Dropbox.DropboxManager.html">DropboxManager</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-DocumentStore.Dropbox.html" title="Summary of DocumentStore\Dropbox"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class DropboxManager</h1>
+
+
+
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-DocumentStore.html">DocumentStore</a>\<a href="namespace-DocumentStore.Dropbox.html">Dropbox</a><br>
+		
+
+			<b>Located at</b> <a href="source-class-DocumentStore.Dropbox.DropboxManager.html#7-140" title="Go to source code">DocumentStore/Dropbox/DropboxManager.php</a>
+		<br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-DocumentStore.Dropbox.DropboxManager.html#17-26" title="Go to source code">__construct</a>( <span><code><a href="class-DocumentStore.Dropbox.DropboxHTTPHandler.html">DocumentStore\Dropbox\DropboxHTTPHandler</a></code> <var>$httpHandler</var></span> )</code>
+
+		<div class="description short">
+			<p>Create a new dropbox instance</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Create a new dropbox instance</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$httpHandler</var></dt>
+					<dd>HTTP handler</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="create" id="_create">
+
+		<td class="attributes"><code>
+			 public 
+
+			object
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_create">#</a>
+		<code><a href="source-class-DocumentStore.Dropbox.DropboxManager.html#28-38" title="Go to source code">create</a>( <span>string <var>$path</var></span>, <span>string <var>$file</var></span> )</code>
+
+		<div class="description short">
+			<p>Upload new file</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Upload new file</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$path</var></dt>
+					<dd>dropbox file</dd>
+					<dt><var>$file</var></dt>
+					<dd>the file local path</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					object
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="update" id="_update">
+
+		<td class="attributes"><code>
+			 public 
+
+			object
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_update">#</a>
+		<code><a href="source-class-DocumentStore.Dropbox.DropboxManager.html#40-50" title="Go to source code">update</a>( <span>string <var>$path</var></span>, <span>string <var>$file</var></span>, <span> <var>$rev</var></span> )</code>
+
+		<div class="description short">
+			<p>Upload updated file</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Upload updated file</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$path</var></dt>
+					<dd>dropbox file</dd>
+					<dt><var>$file</var></dt>
+					<dd>the file local path</dd>
+					<dt><var>$rev</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					object
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="delete" id="_delete">
+
+		<td class="attributes"><code>
+			 public 
+
+			object
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_delete">#</a>
+		<code><a href="source-class-DocumentStore.Dropbox.DropboxManager.html#52-63" title="Go to source code">delete</a>( <span>string <var>$path</var></span> )</code>
+
+		<div class="description short">
+			<p>Delete file</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Delete file</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$path</var></dt>
+					<dd>dropbox file</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					object
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="restore" id="_restore">
+
+		<td class="attributes"><code>
+			 public 
+
+			object
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_restore">#</a>
+		<code><a href="source-class-DocumentStore.Dropbox.DropboxManager.html#65-80" title="Go to source code">restore</a>( <span>string <var>$path</var></span>, <span>string <var>$rev</var></span> )</code>
+
+		<div class="description short">
+			<p>Restore file to revision</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Restore file to revision</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$path</var></dt>
+					<dd>dropbox file</dd>
+					<dt><var>$rev</var></dt>
+					<dd>dropbox revision</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					object
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="download" id="_download">
+
+		<td class="attributes"><code>
+			 public 
+
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_download">#</a>
+		<code><a href="source-class-DocumentStore.Dropbox.DropboxManager.html#82-94" title="Go to source code">download</a>( <span>string <var>$path</var></span>, <span>string <var>$rev</var>,…</span> )</code>
+
+		<div class="description short">
+			<p>Restore file to revision</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Restore file to revision</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$path</var></dt>
+					<dd>dropbox file</dd>
+					<dt><var>$rev</var>,…</dt>
+					<dd>dropbox revision</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+	<table class="summary properties" id="properties">
+	<caption>Properties summary</caption>
+	<tr data-order="httpHandler" id="$httpHandler">
+		<td class="attributes"><code>
+			protected  
+			<code><a href="class-DocumentStore.Dropbox.DropboxHTTPHandler.html">DocumentStore\Dropbox\DropboxHTTPHandler</a></code>
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-DocumentStore.Dropbox.DropboxManager.html#9-14" title="Go to source code"><var>$httpHandler</var></a>
+
+			<div class="description short">
+				<p>HTTP handler</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>HTTP handler</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$httpHandler" class="anchor">#</a>
+				<code></code>
+			</div>
+		</td>
+	</tr>
+	</table>
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>

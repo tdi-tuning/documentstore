@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class DocumentStore\Dropbox\DropboxHTTPHandler</title>
+
+	<link rel="stylesheet" href="resources/style.css?c2f33731c1948fbed7c333554678bfa68d4817da">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+				<li class="active">
+					<a href="namespace-DocumentStore.html">
+						DocumentStore<span></span>
+					</a>
+
+						<ul>
+				<li class="active">
+					<a href="namespace-DocumentStore.Dropbox.html">
+						Dropbox					</a>
+
+						</li>
+				<li>
+					<a href="namespace-DocumentStore.Models.html">
+						Models					</a>
+
+						</li>
+							</ul></li>
+				<li>
+					<a href="namespace-None.html">
+						None					</a>
+
+						</li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li class="active"><a href="class-DocumentStore.Dropbox.DropboxHTTPHandler.html">DropboxHTTPHandler</a></li>
+				<li><a href="class-DocumentStore.Dropbox.DropboxManager.html">DropboxManager</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-DocumentStore.Dropbox.html" title="Summary of DocumentStore\Dropbox"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class DropboxHTTPHandler</h1>
+
+
+
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-DocumentStore.html">DocumentStore</a>\<a href="namespace-DocumentStore.Dropbox.html">Dropbox</a><br>
+		
+
+			<b>Located at</b> <a href="source-class-DocumentStore.Dropbox.DropboxHTTPHandler.html#7-87" title="Go to source code">DocumentStore/Dropbox/DropboxHTTPHandler.php</a>
+		<br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-DocumentStore.Dropbox.DropboxHTTPHandler.html#31-43" title="Go to source code">__construct</a>( <span>string <var>$access_token</var></span>, <span>GuzzleHttp\Client <var>$client</var></span>, <span> <var>$test_mode</var> = <span class="php-keyword1">false</span></span> )</code>
+
+		<div class="description short">
+			<p>Create a new dropbox http client instance</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Create a new dropbox http client instance</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$access_token</var></dt>
+					<dd>Access token</dd>
+					<dt><var>$client</var></dt>
+					<dd>Http client</dd>
+					<dt><var>$test_mode</var></dt>
+					<dd></dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="post" id="_post">
+
+		<td class="attributes"><code>
+			 public 
+
+			GuzzleHttp\Psr7\Response
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_post">#</a>
+		<code><a href="source-class-DocumentStore.Dropbox.DropboxHTTPHandler.html#45-85" title="Go to source code">post</a>( <span>string <var>$url</var></span>, <span>array <var>$params</var></span>, <span>array <var>$headers</var> = []</span>, <span>string <var>$body</var> = <span class="php-quote">''</span></span>, <span>boolean <var>$isJson</var> = <span class="php-keyword1">false</span></span>, <span>boolean <var>$isStream</var> = <span class="php-keyword1">false</span></span>, <span>boolean <var>$useHeader</var> = <span class="php-keyword1">false</span></span> )</code>
+
+		<div class="description short">
+			<p>Send POST request</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Send POST request</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$url</var></dt>
+					<dd>url</dd>
+					<dt><var>$params</var></dt>
+					<dd>json params</dd>
+					<dt><var>$headers</var></dt>
+					<dd>headers</dd>
+					<dt><var>$body</var></dt>
+					<dd>body or file path</dd>
+					<dt><var>$isJson</var></dt>
+					<dd>use params as body in JSON format</dd>
+					<dt><var>$isStream</var></dt>
+					<dd>create a stream as body</dd>
+					<dt><var>$useHeader</var></dt>
+					<dd>force using Dropbox-API-Arg</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					GuzzleHttp\Psr7\Response
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+	<table class="summary properties" id="properties">
+	<caption>Properties summary</caption>
+	<tr data-order="access_token" id="$access_token">
+		<td class="attributes"><code>
+			protected  
+			string
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-DocumentStore.Dropbox.DropboxHTTPHandler.html#9-14" title="Go to source code"><var>$access_token</var></a>
+
+			<div class="description short">
+				<p>Access token</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Access token</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$access_token" class="anchor">#</a>
+				<code></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="client" id="$client">
+		<td class="attributes"><code>
+			protected  
+			GuzzleHttp\Client
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-DocumentStore.Dropbox.DropboxHTTPHandler.html#16-21" title="Go to source code"><var>$client</var></a>
+
+			<div class="description short">
+				<p>Http client</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Http client</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$client" class="anchor">#</a>
+				<code></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="test_mode" id="$test_mode">
+		<td class="attributes"><code>
+			protected  
+			boolean
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-DocumentStore.Dropbox.DropboxHTTPHandler.html#23-28" title="Go to source code"><var>$test_mode</var></a>
+
+			<div class="description short">
+				<p>Test mode</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Test mode</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$test_mode" class="anchor">#</a>
+				<code></code>
+			</div>
+		</td>
+	</tr>
+	</table>
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>
