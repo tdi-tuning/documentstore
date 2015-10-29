@@ -26,6 +26,11 @@ class ServiceProviderTest extends LaravelTestCase
                 "path_lower" => "/homework/math/prime_numbers.txt",
                 "rev" => "a1c10ce0dd78",
                 "id" => "id:a4ayc_80_OEAAAAAAAAAXw"
+            ])),
+            new Response(200, [], json_encode([
+                "path_lower" => "/homework/math/prime_numbers.txt",
+                "rev" => "a1c10ce0dd78",
+                "id" => "id:a4ayc_80_OEAAAAAAAAAXw"
             ]))
         ]);
         $stack = HandlerStack::create($mock);
@@ -49,9 +54,19 @@ class ServiceProviderTest extends LaravelTestCase
         $this->executeCreate($result);
     }
 
+    public function testDoubleCreateFallbackToUpdate()
+    {
+        $result = DocumentStore::create("/homework/math/prime_numbers.txt", 'content');
+        $this->assertTrue($result);
+        $result = DocumentStore::create("/homework/math/prime_numbers.txt", 'content');
+        $this->assertTrue($result);
+        $revisions = DocumentStore::revisions("/homework/math/prime_numbers.txt");
+        $this->assertEquals($revisions[0]['type'], 'C');
+        $this->assertEquals($revisions[1]['type'], 'U');
+    }
+
     public function executeCreate($result)
     {
-        $this->assertTrue($result);
         $file = File::find(1);
         $revision = $file->revisions->first();
         $this->assertEquals($file->path, '/homework/math/prime_numbers.txt');

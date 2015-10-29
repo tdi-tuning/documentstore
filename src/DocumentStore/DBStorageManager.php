@@ -81,6 +81,17 @@ class DBStorageManager
     }
 
     /**
+     * Check if file exists
+     *
+     * @param  string $path dropbox file
+     * @return bool
+     */
+    public function exists($path)
+    {
+        return File::where('path', $path)->first() !== null;
+    }
+
+    /**
      * Get current revision of file
      *
      * @param  string $path dropbox file

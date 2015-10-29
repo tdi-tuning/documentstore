@@ -44,6 +44,9 @@ class DocumentStore
      */
     public function create($path, $file, $meta=null)
     {
+        if ($this->dbStorageManager->exists($path)) {
+            return $this->update($path, $file, $meta);
+        }
         $result = $this->dropboxManager->create($path, $file);
         return $this->dbStorageManager->create($result, $meta);
     }
