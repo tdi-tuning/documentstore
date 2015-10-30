@@ -94,6 +94,22 @@ class DropboxManager
     }
 
     /**
+     * Create shared link for path
+     *
+     * @param  string $path dropbox file
+     * @return object
+     */
+    public function createSharedLink($path)
+    {
+        $url = "https://api.dropboxapi.com/2/sharing/create_shared_link";
+
+        return $this->post($url, [
+            'path' => $path,
+            'short_url' => false
+        ], [], '', true);
+    }
+
+    /**
      * Upload file
      *
      * @param  string $path dropbox file
