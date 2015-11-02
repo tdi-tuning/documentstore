@@ -96,11 +96,12 @@ class DocumentStore
      * Download file
      *
      * @param  string $path dropbox file
+     * @param  string $rev dropbox revision
      * @return string
      */
-    public function download($path)
+    public function download($path, $rev=null)
     {
-        return $this->dropboxManager->download($path);
+        return $this->dropboxManager->download($path, $rev);
     }
 
     /**

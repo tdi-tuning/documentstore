@@ -77,4 +77,22 @@ class DBStorageManagerTest extends LaravelTestCase
         $this->assertEquals(sizeof($revisions), 2);
         $this->assertTrue($revisions[0]['current']);
     }
+
+    public function testDuplicatedRevisions()
+    {
+        $dbStorageManager = new DBStorageManager;
+        $dbStorageManager->create((object) [
+            "path_lower" => "/homework/math/prime_numbers.txt",
+            "rev" => "a1c10ce0dd78",
+            "id" => "id:a4ayc_80_OEAAAAAAAAAXw"
+        ]);
+        $dbStorageManager->update((object) [
+            "path_lower" => "/homework/math/prime_numbers.txt",
+            "rev" => "a1c10ce0dd78",
+            "id" => "id:a4ayc_80_OEAAAAAAAAAXw"
+        ]);
+        $file = File::find(1);
+        $revisions = $file->revisions;
+        $this->assertEquals(count($revisions), 1);
+    }
 }

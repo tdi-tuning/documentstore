@@ -86,10 +86,13 @@ class DropboxManager
      * @param  string $rev dropbox revision
      * @return string
      */
-    public function download($path)
+    public function download($path, $rev=null)
     {
         $url = "https://content.dropboxapi.com/2/files/download";
-
+        
+        if ($rev) {
+            return $this->post($url, ['path' => $path, 'rev' => $rev], [], '', false, false, true, false);
+        }
         return $this->post($url, ['path' => $path], [], '', false, false, true, false);
     }
 
@@ -148,6 +151,7 @@ class DropboxManager
          $isJson=false, $isStream=false, $useHeader=false, $isJsonResponse=true)
     {
         $response = $this->httpHandler->post($url, $params, $headers, $body, $isJson, $isStream, $useHeader);
+
         if ($isJsonResponse) {
             return json_decode($response->getBody());
         }

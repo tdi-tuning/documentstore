@@ -29,7 +29,7 @@ class ServiceProviderTest extends LaravelTestCase
             ])),
             new Response(200, [], json_encode([
                 "path_lower" => "/homework/math/prime_numbers.txt",
-                "rev" => "a1c10ce0dd78",
+                "rev" => "a1c10ce0dd79",
                 "id" => "id:a4ayc_80_OEAAAAAAAAAXw"
             ]))
         ]);
