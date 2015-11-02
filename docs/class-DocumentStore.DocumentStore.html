@@ -109,7 +109,7 @@
 		<b>Namespace:</b> <a href="namespace-DocumentStore.html">DocumentStore</a><br>
 		
 
-			<b>Located at</b> <a href="source-class-DocumentStore.DocumentStore.html#7-113" title="Go to source code">DocumentStore/DocumentStore.php</a>
+			<b>Located at</b> <a href="source-class-DocumentStore.DocumentStore.html#7-130" title="Go to source code">DocumentStore/DocumentStore.php</a>
 		<br>
 	</div>
 
@@ -166,7 +166,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_create">#</a>
-		<code><a href="source-class-DocumentStore.DocumentStore.html#37-49" title="Go to source code">create</a>( <span>string <var>$path</var></span>, <span>string <var>$file</var></span>, <span>object <var>$meta</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-DocumentStore.DocumentStore.html#37-52" title="Go to source code">create</a>( <span>string <var>$path</var></span>, <span>string <var>$file</var></span>, <span>object <var>$meta</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			<p>Upload new file</p>
@@ -209,7 +209,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_update">#</a>
-		<code><a href="source-class-DocumentStore.DocumentStore.html#51-64" title="Go to source code">update</a>( <span>string <var>$path</var></span>, <span>string <var>$file</var></span>, <span>object <var>$meta</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-DocumentStore.DocumentStore.html#54-67" title="Go to source code">update</a>( <span>string <var>$path</var></span>, <span>string <var>$file</var></span>, <span>object <var>$meta</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			<p>Upload new version of file</p>
@@ -252,7 +252,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_delete">#</a>
-		<code><a href="source-class-DocumentStore.DocumentStore.html#66-77" title="Go to source code">delete</a>( <span>string <var>$path</var></span>, <span>object <var>$meta</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-DocumentStore.DocumentStore.html#69-80" title="Go to source code">delete</a>( <span>string <var>$path</var></span>, <span>object <var>$meta</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			<p>Delete file</p>
@@ -293,7 +293,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_restore">#</a>
-		<code><a href="source-class-DocumentStore.DocumentStore.html#79-90" title="Go to source code">restore</a>( <span>string <var>$path</var></span>, <span>string <var>$rev</var></span> )</code>
+		<code><a href="source-class-DocumentStore.DocumentStore.html#82-93" title="Go to source code">restore</a>( <span>string <var>$path</var></span>, <span>string <var>$rev</var></span> )</code>
 
 		<div class="description short">
 			<p>Delete file</p>
@@ -334,7 +334,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_download">#</a>
-		<code><a href="source-class-DocumentStore.DocumentStore.html#92-101" title="Go to source code">download</a>( <span>string <var>$path</var></span> )</code>
+		<code><a href="source-class-DocumentStore.DocumentStore.html#95-105" title="Go to source code">download</a>( <span>string <var>$path</var></span>, <span>string <var>$rev</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			<p>Download file</p>
@@ -342,6 +342,47 @@
 
 		<div class="description detailed hidden">
 			<p>Download file</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$path</var></dt>
+					<dd>dropbox file</dd>
+					<dt><var>$rev</var></dt>
+					<dd>dropbox revision</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="createSharedLink" id="_createSharedLink">
+
+		<td class="attributes"><code>
+			 public 
+
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_createSharedLink">#</a>
+		<code><a href="source-class-DocumentStore.DocumentStore.html#107-118" title="Go to source code">createSharedLink</a>( <span>string <var>$path</var></span> )</code>
+
+		<div class="description short">
+			<p>Create shared link for path</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Create shared link for path</p>
 
 
 				<h4>Parameters</h4>
@@ -373,7 +414,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_revisions">#</a>
-		<code><a href="source-class-DocumentStore.DocumentStore.html#103-112" title="Go to source code">revisions</a>( <span>string <var>$id</var></span> )</code>
+		<code><a href="source-class-DocumentStore.DocumentStore.html#120-129" title="Go to source code">revisions</a>( <span>string <var>$id</var></span> )</code>
 
 		<div class="description short">
 			<p>Get revisions of file</p>
