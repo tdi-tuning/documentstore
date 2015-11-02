@@ -56,6 +56,15 @@ class DropboxManagerTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals($request->getHeader('Dropbox-API-Arg')[0], '{"path":"path"}');
     }
 
+    public function testDownloadRevision()
+    {
+        $this->dropboxManager->download('path', 'rev');
+        $request = $this->container[0]['request'];
+        $this->assertEquals($request->getBody(), '');
+        $this->assertEquals($request->getHeader('Authorization')[0], 'Bearer test');
+        $this->assertEquals($request->getHeader('Dropbox-API-Arg')[0], '{"path":"path","rev":"rev"}');
+    }
+
     public function testDelete()
     {
         $this->dropboxManager->delete('path');

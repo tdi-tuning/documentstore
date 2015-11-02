@@ -43,6 +43,11 @@ class FullTest extends LaravelTestCase
         $this->assertTrue($result);
         $content = $documentStore->download('/path/file.txt');
         $this->assertEquals($content, "v2 file\n");
+
+        $content = $documentStore->download('/path/file.txt', $rev1);
+        $this->assertEquals($content, "v1 file\n");
+        $content = $documentStore->download('/path/file.txt', $rev2);
+        $this->assertEquals($content, "v2 file\n");
         
         $result = $documentStore->delete('/path/file.txt');
         $this->assertTrue($result);

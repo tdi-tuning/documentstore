@@ -142,6 +142,9 @@ class DBStorageManager
             
             $file->revision_id = $rev->id;
             $file->save();
+
+        } catch (\Illuminate\Database\QueryException $e) {
+           \DB::rollback();
         } catch (\Exception $e) {
            \DB::rollback();
            throw $e;
