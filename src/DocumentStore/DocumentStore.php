@@ -104,6 +104,19 @@ class DocumentStore
     }
 
     /**
+     * Create shared link for path
+     *
+     * @param  string $path dropbox file
+     * @return string
+     */
+    public function createSharedLink($path)
+    {
+        $object = $this->dropboxManager->createSharedLink($path);
+        
+        return $object->url;
+    }
+
+    /**
      * Get revisions of file
      *
      * @param  string $path dropbox file

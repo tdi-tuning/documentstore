@@ -65,6 +65,15 @@ class DropboxManagerTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals($request->getHeader('Authorization')[0], 'Bearer test');
     }
 
+    public function testCreateSharedLink()
+    {
+        $this->dropboxManager->createSharedLink('path');
+        $request = $this->container[0]['request'];
+        $this->assertEquals($request->getBody(), '{"path":"path","short_url":false}');
+        $this->assertEquals($request->getHeader('Content-Type')[0], 'application/json');
+        $this->assertEquals($request->getHeader('Authorization')[0], 'Bearer test');
+    }
+
     public function testRestore()
     {
         $this->dropboxManager->restore('path', 'rev');
