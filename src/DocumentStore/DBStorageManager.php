@@ -106,13 +106,18 @@ class DBStorageManager
      * Get revisions of file
      *
      * @param  string $path dropbox file
+     * @param  array $eagerLoading relashionships to preload
      * @return array
      */
-    public function revisions($path)
+    public function revisions($path, $eagerLoading=[])
     {
         $file = File::where('path', $path)->first();
         $current = $file->revision_id;
-        $revisions = $file->revisions->toArray();
+        $revisions = $file->revisions;
+        if (count($eagerLoading) > 0) {
+            $revisions->load($eagerLoading);
+        }
+        $revisions = $revisions->toArray();
         return array_map(function ($el) use($current) {
             $el['current'] = $el['id'] === $current;
             return $el;

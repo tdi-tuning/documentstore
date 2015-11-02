@@ -121,10 +121,11 @@ class DocumentStore
      * Get revisions of file
      *
      * @param  string $path dropbox file
+     * @param  array $eagerLoading relashionships to preload
      * @return object
      */
-    public function revisions($id)
+    public function revisions($id, $eagerLoading=[])
     {
-        return $this->dbStorageManager->revisions($id);
+        return $this->dbStorageManager->revisions($id, $eagerLoading);
     }
 }
