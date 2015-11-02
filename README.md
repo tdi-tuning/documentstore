@@ -80,6 +80,11 @@ $result = DocumentStore::update('/path/file.txt', '/file2.txt', $meta);
 $content = DocumentStore::download('/path/file.txt');
 ```
 
+## Download other version of a file
+```
+$content = DocumentStore::download('/path/file.txt', 'revision');
+```
+
 ## Get revisions of a file
 ```
 $revisions = DocumentStore::revisions('/path/file.txt');
@@ -95,3 +100,7 @@ $result = DocumentStore::restore('/path/file.txt', 'revision');
 $result = DocumentStore::delete('/path/file.txt', $meta);
 ```
 
+## Create public link to a file
+```
+$link = DocumentStore::createSharedLink('/path/file.txt');
+```
