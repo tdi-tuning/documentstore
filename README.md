@@ -90,6 +90,12 @@ $content = DocumentStore::download('/path/file.txt', 'revision');
 $revisions = DocumentStore::revisions('/path/file.txt');
 ```
 
+## Get revisions of a file with eager loading
+```
+$revisions = DocumentStore::revisions('/path/file.txt', ['meta.xxx']);
+```
+
+
 ## Restore a file to a version
 ```
 $result = DocumentStore::restore('/path/file.txt', 'revision');
