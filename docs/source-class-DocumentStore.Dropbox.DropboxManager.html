@@ -179,7 +179,7 @@
 </span><span id="80" class="l">    }
 </span><span id="81" class="l">
 </span><span id="82" class="l">    <span class="php-comment">/**
-</span></span><span id="83" class="l"><span class="php-comment">     * Restore file to revision
+</span></span><span id="83" class="l"><span class="php-comment">     * Download a file with a revision
 </span></span><span id="84" class="l"><span class="php-comment">     *
 </span></span><span id="85" class="l"><span class="php-comment">     * @param  string $path dropbox file
 </span></span><span id="86" class="l"><span class="php-comment">     * @param  string $rev dropbox revision
@@ -254,7 +254,7 @@
 </span><span id="155" class="l">        <span class="php-keyword1">if</span> (<span class="php-var">$isJsonResponse</span>) {
 </span><span id="156" class="l">            <span class="php-keyword1">return</span> <span class="php-keyword2">json_decode</span>(<span class="php-var">$response</span>-&gt;getBody());
 </span><span id="157" class="l">        }
-</span><span id="158" class="l">        <span class="php-keyword1">return</span> <span class="php-var">$response</span>-&gt;getBody();
+</span><span id="158" class="l">        <span class="php-keyword1">return</span> <span class="php-var">$response</span>-&gt;getBody()-&gt;getContents();
 </span><span id="159" class="l">    }
 </span><span id="160" class="l">}
 </span><span id="161" class="l"></span></code></pre>

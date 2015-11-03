@@ -22,12 +22,12 @@ class FullTest extends LaravelTestCase
 
         $result = $documentStore->create('/path/file.txt', __DIR__.'/file1.txt');
         $this->assertTrue($result);
-        $content = $documentStore->download('/path/file.txt');
+        list($content, $mime) = $documentStore->download('/path/file.txt');
         $this->assertEquals($content, "v1 file\n");
 
         $result = $documentStore->update('/path/file.txt', __DIR__.'/file2.txt');
         $this->assertTrue($result);
-        $content = $documentStore->download('/path/file.txt');
+        list($content, $mime) = $documentStore->download('/path/file.txt');
         $this->assertEquals($content, "v2 file\n");
 
         $revisions = $documentStore->revisions('/path/file.txt');
@@ -36,17 +36,17 @@ class FullTest extends LaravelTestCase
 
         $result = $documentStore->restore('/path/file.txt', $rev1);
         $this->assertTrue($result);
-        $content = $documentStore->download('/path/file.txt');
+        list($content, $mime) = $documentStore->download('/path/file.txt');
         $this->assertEquals($content, "v1 file\n");
 
         $result = $documentStore->restore('/path/file.txt', $rev2);
         $this->assertTrue($result);
-        $content = $documentStore->download('/path/file.txt');
+        list($content, $mime) = $documentStore->download('/path/file.txt');
         $this->assertEquals($content, "v2 file\n");
 
-        $content = $documentStore->download('/path/file.txt', $rev1);
+        list($content, $mime) = $documentStore->download('/path/file.txt', $rev1);
         $this->assertEquals($content, "v1 file\n");
-        $content = $documentStore->download('/path/file.txt', $rev2);
+        list($content, $mime) = $documentStore->download('/path/file.txt', $rev2);
         $this->assertEquals($content, "v2 file\n");
         
         $result = $documentStore->delete('/path/file.txt');
