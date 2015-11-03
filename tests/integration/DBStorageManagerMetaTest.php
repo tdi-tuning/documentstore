@@ -24,7 +24,6 @@ class DBStorageManagerMetaTest extends LaravelTestCase
     {
         $meta = new Meta;
         $meta->user_id = 12;
-        $meta->save();
 
         $dbStorageManager = App::make('DocumentStore\DBStorageManager');
         $result = $dbStorageManager->create((object) [
@@ -47,7 +46,6 @@ class DBStorageManagerMetaTest extends LaravelTestCase
 
         $meta = new Meta;
         $meta->user_id = 1;
-        $meta->save();
 
         $dbStorageManager = App::make('DocumentStore\DBStorageManager');
         $result = $dbStorageManager->create((object) [

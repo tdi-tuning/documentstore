@@ -18,6 +18,8 @@ class DBStorageManager
         \DB::beginTransaction();
 
         try {
+            if ($meta) $meta->save();
+
             $file = new File;
             $file->path = $result->path_lower;
             $file->dp_id = $result->id;
@@ -138,6 +140,8 @@ class DBStorageManager
         \DB::beginTransaction();
 
         try {
+            if ($meta) $meta->save();
+
             $rev = new Revision;
             $rev->rev = $result->rev;
             $rev->type = $type;

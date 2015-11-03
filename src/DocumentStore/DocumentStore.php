@@ -97,11 +97,13 @@ class DocumentStore
      *
      * @param  string $path dropbox file
      * @param  string $rev dropbox revision
-     * @return string
+     * @return array
      */
     public function download($path, $rev=null)
     {
-        return $this->dropboxManager->download($path, $rev);
+        $mime = \Defr\MimeType::get($path);
+        $stream = $this->dropboxManager->download($path, $rev);
+        return [$stream, $mime];
     }
 
     /**

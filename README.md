@@ -82,7 +82,7 @@ $content = DocumentStore::download('/path/file.txt');
 
 ## Download other version of a file
 ```
-$content = DocumentStore::download('/path/file.txt', 'revision');
+list($content, $mime) = DocumentStore::download('/path/file.txt', 'revision');
 ```
 
 ## Get revisions of a file
