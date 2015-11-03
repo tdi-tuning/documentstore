@@ -58,4 +58,40 @@ class DBStorageManagerMetaTest extends LaravelTestCase
         $this->assertEquals($revisions[0]['meta']['user_id'], 1);
         $this->assertEquals($revisions[0]['meta']['user']['name'], "admin");
     }
+
+    public function testDuplicatedRevisionsMetaShouldntBeSaved()
+    {
+        $meta1 = new Meta;
+        $meta1->user_id = 1;
+
+        $dbStorageManager = new DBStorageManager;
+        $dbStorageManager->create((object) [
+            "path_lower" => "/homework/math/prime_numbers.txt",
+            "rev" => "a1c10ce0dd78",
+            "id" => "id:a4ayc_80_OEAAAAAAAAAXw"
+        ], $meta1);
+        
+        $meta2 = new Meta;
+        $meta2->user_id = 2;
+        $dbStorageManager->update((object) [
+            "path_lower" => "/homework/math/prime_numbers.txt",
+            "rev" => "a1c10ce0dd78",
+            "id" => "id:a4ayc_80_OEAAAAAAAAAXw"
+        ], $meta2);
+
+        $meta3 = new Meta;
+        $meta3->user_id = 3;
+        $dbStorageManager->update((object) [
+            "path_lower" => "/homework/math/prime_numbers.txt",
+            "rev" => "a1c10ce0dd78",
+            "id" => "id:a4ayc_80_OEAAAAAAAAAXw"
+        ], $meta3);
+
+        $file = File::find(1);
+        $revisions = $file->revisions;
+        $this->assertEquals(count($revisions), 1);
+
+        $metas = Meta::all()->toArray();
+        $this->assertEquals(count($metas), 1);
+    }
 }
