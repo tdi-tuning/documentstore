@@ -80,7 +80,7 @@ class DropboxManager
     }
 
     /**
-     * Restore file to revision
+     * Download a file with a revision
      *
      * @param  string $path dropbox file
      * @param  string $rev dropbox revision
@@ -155,6 +155,6 @@ class DropboxManager
         if ($isJsonResponse) {
             return json_decode($response->getBody());
         }
-        return $response->getBody();
+        return $response->getBody()->getContents();
     }
 }
