@@ -65,27 +65,30 @@ class DBStorageManagerMetaTest extends LaravelTestCase
         $meta1->user_id = 1;
 
         $dbStorageManager = new DBStorageManager;
-        $dbStorageManager->create((object) [
+        $result1 = $dbStorageManager->create((object) [
             "path_lower" => "/homework/math/prime_numbers.txt",
             "rev" => "a1c10ce0dd78",
             "id" => "id:a4ayc_80_OEAAAAAAAAAXw"
         ], $meta1);
+        $this->assertTrue($result1);
         
         $meta2 = new Meta;
         $meta2->user_id = 2;
-        $dbStorageManager->update((object) [
+        $result2 = $dbStorageManager->update((object) [
             "path_lower" => "/homework/math/prime_numbers.txt",
             "rev" => "a1c10ce0dd78",
             "id" => "id:a4ayc_80_OEAAAAAAAAAXw"
         ], $meta2);
+        $this->assertFalse($result2);
 
         $meta3 = new Meta;
         $meta3->user_id = 3;
-        $dbStorageManager->update((object) [
+        $result3 = $dbStorageManager->update((object) [
             "path_lower" => "/homework/math/prime_numbers.txt",
             "rev" => "a1c10ce0dd78",
             "id" => "id:a4ayc_80_OEAAAAAAAAAXw"
         ], $meta3);
+        $this->assertFalse($result3);
 
         $file = File::find(1);
         $revisions = $file->revisions;

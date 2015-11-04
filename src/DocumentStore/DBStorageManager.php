@@ -36,7 +36,7 @@ class DBStorageManager
             $file->save();
         } catch (\Exception $e) {
            \DB::rollback();
-           throw $e;
+           return false;
         }
 
         \DB::commit();
@@ -152,12 +152,9 @@ class DBStorageManager
             $file->revision_id = $rev->id;
             $file->save();
 
-        } catch (\Illuminate\Database\QueryException $e) {
-            \DB::rollback();
-            return true;
         } catch (\Exception $e) {
             \DB::rollback();
-            throw $e;
+            return false;
         }
 
         \DB::commit();
