@@ -76,7 +76,9 @@ class DocumentStore
     public function delete($path, $meta=null)
     {
         $result = $this->dropboxManager->delete($path);
-        return $this->dbStorageManager->delete($result, $meta);
+        if ($result)
+            return $this->dbStorageManager->delete($result, $meta);
+        return false;
     }
 
     /**
