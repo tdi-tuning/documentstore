@@ -153,10 +153,11 @@ class DBStorageManager
             $file->save();
 
         } catch (\Illuminate\Database\QueryException $e) {
-           \DB::rollback();
+            \DB::rollback();
+            return true;
         } catch (\Exception $e) {
-           \DB::rollback();
-           throw $e;
+            \DB::rollback();
+            throw $e;
         }
 
         \DB::commit();
