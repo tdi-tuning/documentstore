@@ -11,7 +11,7 @@ class FullTest extends LaravelTestCase
     protected function getEnvironmentSetUp($app)
     {
         parent::getEnvironmentSetUp($app);
-        $app['config']->set('docstore.access_token', 'KtdDEger43oAAAAAAAAAZxsbA-fVgfMlhKBzgSKktzGV3xrrM8MnUkrwpufgZYC7');
+        $app['config']->set('docstore.access_token', '');
     }
 
 
