@@ -109,7 +109,7 @@
 		<b>Namespace:</b> <a href="namespace-DocumentStore.html">DocumentStore</a><br>
 		
 
-			<b>Located at</b> <a href="source-class-DocumentStore.DBStorageManager.html#7-166" title="Go to source code">DocumentStore/DBStorageManager.php</a>
+			<b>Located at</b> <a href="source-class-DocumentStore.DBStorageManager.html#7-185" title="Go to source code">DocumentStore/DBStorageManager.php</a>
 		<br>
 	</div>
 
@@ -129,7 +129,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_create">#</a>
-		<code><a href="source-class-DocumentStore.DBStorageManager.html#9-45" title="Go to source code">create</a>( <span>object <var>$result</var></span>, <span> <var>$meta</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-DocumentStore.DBStorageManager.html#9-46" title="Go to source code">create</a>( <span>object <var>$result</var></span>, <span>object <var>$meta</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			<p>Create record of new file</p>
@@ -144,7 +144,7 @@
 					<dt><var>$result</var></dt>
 					<dd>dropbox response</dd>
 					<dt><var>$meta</var></dt>
-					<dd></dd>
+					<dd>Meta Eloquent object</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -170,7 +170,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_update">#</a>
-		<code><a href="source-class-DocumentStore.DBStorageManager.html#47-56" title="Go to source code">update</a>( <span>object <var>$result</var></span>, <span> <var>$meta</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-DocumentStore.DBStorageManager.html#48-58" title="Go to source code">update</a>( <span>object <var>$result</var></span>, <span>object <var>$meta</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			<p>Add an update revision</p>
@@ -185,7 +185,7 @@
 					<dt><var>$result</var></dt>
 					<dd>dropbox response</dd>
 					<dt><var>$meta</var></dt>
-					<dd></dd>
+					<dd>Meta Eloquent object</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -211,7 +211,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_delete">#</a>
-		<code><a href="source-class-DocumentStore.DBStorageManager.html#58-67" title="Go to source code">delete</a>( <span>object <var>$result</var></span>, <span> <var>$meta</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-DocumentStore.DBStorageManager.html#60-71" title="Go to source code">delete</a>( <span>object <var>$result</var></span>, <span>object <var>$meta</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			<p>Add a delete revision</p>
@@ -226,7 +226,7 @@
 					<dt><var>$result</var></dt>
 					<dd>dropbox response</dd>
 					<dt><var>$meta</var></dt>
-					<dd></dd>
+					<dd>Meta Eloquent object</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -252,7 +252,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_restore">#</a>
-		<code><a href="source-class-DocumentStore.DBStorageManager.html#69-83" title="Go to source code">restore</a>( <span>object <var>$result</var></span>, <span> <var>$rev</var></span> )</code>
+		<code><a href="source-class-DocumentStore.DBStorageManager.html#73-88" title="Go to source code">restore</a>( <span>object <var>$result</var></span>, <span> <var>$rev</var></span> )</code>
 
 		<div class="description short">
 			<p>Restore revision</p>
@@ -293,7 +293,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_exists">#</a>
-		<code><a href="source-class-DocumentStore.DBStorageManager.html#85-94" title="Go to source code">exists</a>( <span>string <var>$path</var></span> )</code>
+		<code><a href="source-class-DocumentStore.DBStorageManager.html#90-99" title="Go to source code">exists</a>( <span>string <var>$path</var></span> )</code>
 
 		<div class="description short">
 			<p>Check if file exists</p>
@@ -332,7 +332,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_currentRevision">#</a>
-		<code><a href="source-class-DocumentStore.DBStorageManager.html#96-105" title="Go to source code">currentRevision</a>( <span>string <var>$path</var></span> )</code>
+		<code><a href="source-class-DocumentStore.DBStorageManager.html#101-112" title="Go to source code">currentRevision</a>( <span>string <var>$path</var></span> )</code>
 
 		<div class="description short">
 			<p>Get current revision of file</p>
@@ -359,6 +359,45 @@
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="isDeleted" id="_isDeleted">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isDeleted">#</a>
+		<code><a href="source-class-DocumentStore.DBStorageManager.html#114-125" title="Go to source code">isDeleted</a>( <span>string <var>$path</var></span> )</code>
+
+		<div class="description short">
+			<p>Get if the file is deleted</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get if the file is deleted</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$path</var></dt>
+					<dd>dropbox file</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="revisions" id="_revisions">
 
 		<td class="attributes"><code>
@@ -371,7 +410,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_revisions">#</a>
-		<code><a href="source-class-DocumentStore.DBStorageManager.html#107-127" title="Go to source code">revisions</a>( <span>string <var>$path</var></span>, <span>array <var>$eagerLoading</var> = []</span> )</code>
+		<code><a href="source-class-DocumentStore.DBStorageManager.html#127-147" title="Go to source code">revisions</a>( <span>string <var>$path</var></span>, <span>array <var>$eagerLoading</var> = []</span> )</code>
 
 		<div class="description short">
 			<p>Get revisions of file</p>

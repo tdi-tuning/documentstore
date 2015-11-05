@@ -109,7 +109,7 @@
 		<b>Namespace:</b> <a href="namespace-DocumentStore.html">DocumentStore</a><br>
 		
 
-			<b>Located at</b> <a href="source-class-DocumentStore.DocumentStore.html#7-133" title="Go to source code">DocumentStore/DocumentStore.php</a>
+			<b>Located at</b> <a href="source-class-DocumentStore.DocumentStore.html#7-154" title="Go to source code">DocumentStore/DocumentStore.php</a>
 		<br>
 	</div>
 
@@ -252,7 +252,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_delete">#</a>
-		<code><a href="source-class-DocumentStore.DocumentStore.html#69-80" title="Go to source code">delete</a>( <span>string <var>$path</var></span>, <span>object <var>$meta</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-DocumentStore.DocumentStore.html#69-82" title="Go to source code">delete</a>( <span>string <var>$path</var></span>, <span>object <var>$meta</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			<p>Delete file</p>
@@ -293,14 +293,14 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_restore">#</a>
-		<code><a href="source-class-DocumentStore.DocumentStore.html#82-93" title="Go to source code">restore</a>( <span>string <var>$path</var></span>, <span>string <var>$rev</var></span> )</code>
+		<code><a href="source-class-DocumentStore.DocumentStore.html#84-95" title="Go to source code">restore</a>( <span>string <var>$path</var></span>, <span>string <var>$rev</var></span> )</code>
 
 		<div class="description short">
-			<p>Delete file</p>
+			<p>Restore revision</p>
 		</div>
 
 		<div class="description detailed hidden">
-			<p>Delete file</p>
+			<p>Restore revision</p>
 
 
 				<h4>Parameters</h4>
@@ -327,21 +327,21 @@
 		<td class="attributes"><code>
 			 public 
 
-			array
+			mixed
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_download">#</a>
-		<code><a href="source-class-DocumentStore.DocumentStore.html#95-107" title="Go to source code">download</a>( <span>string <var>$path</var></span>, <span>string <var>$rev</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-DocumentStore.DocumentStore.html#97-113" title="Go to source code">download</a>( <span>string <var>$path</var></span>, <span>string <var>$rev</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
-			<p>Download file</p>
+			<p>Download file, returns false if file deleted</p>
 		</div>
 
 		<div class="description detailed hidden">
-			<p>Download file</p>
+			<p>Download file, returns false if file deleted</p>
 
 
 				<h4>Parameters</h4>
@@ -354,7 +354,7 @@
 
 				<h4>Returns</h4>
 				<div class="list">
-					array
+					mixed
 				</div>
 
 
@@ -368,21 +368,21 @@
 		<td class="attributes"><code>
 			 public 
 
-			string
+			mixed
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_createSharedLink">#</a>
-		<code><a href="source-class-DocumentStore.DocumentStore.html#109-120" title="Go to source code">createSharedLink</a>( <span>string <var>$path</var></span> )</code>
+		<code><a href="source-class-DocumentStore.DocumentStore.html#115-130" title="Go to source code">createSharedLink</a>( <span>string <var>$path</var></span> )</code>
 
 		<div class="description short">
-			<p>Create shared link for path</p>
+			<p>Create shared link for path, returns false if file deleted</p>
 		</div>
 
 		<div class="description detailed hidden">
-			<p>Create shared link for path</p>
+			<p>Create shared link for path, returns false if file deleted</p>
 
 
 				<h4>Parameters</h4>
@@ -393,7 +393,46 @@
 
 				<h4>Returns</h4>
 				<div class="list">
-					string
+					mixed
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isDeleted" id="_isDeleted">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isDeleted">#</a>
+		<code><a href="source-class-DocumentStore.DocumentStore.html#132-141" title="Go to source code">isDeleted</a>( <span>string <var>$path</var></span> )</code>
+
+		<div class="description short">
+			<p>Get if the file is deleted</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get if the file is deleted</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$path</var></dt>
+					<dd>dropbox file</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
 				</div>
 
 
@@ -414,7 +453,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_revisions">#</a>
-		<code><a href="source-class-DocumentStore.DocumentStore.html#122-132" title="Go to source code">revisions</a>( <span>string <var>$id</var></span>, <span>array <var>$eagerLoading</var> = []</span> )</code>
+		<code><a href="source-class-DocumentStore.DocumentStore.html#143-153" title="Go to source code">revisions</a>( <span>string <var>$id</var></span>, <span>array <var>$eagerLoading</var> = []</span> )</code>
 
 		<div class="description short">
 			<p>Get revisions of file</p>

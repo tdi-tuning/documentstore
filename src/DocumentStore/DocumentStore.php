@@ -82,7 +82,7 @@ class DocumentStore
     }
 
     /**
-     * Delete file
+     * Restore revision
      *
      * @param  string $path dropbox file
      * @param  string $rev dropbox revision
@@ -95,30 +95,49 @@ class DocumentStore
     }
     
     /**
-     * Download file
+     * Download file, returns false if file deleted
      *
      * @param  string $path dropbox file
      * @param  string $rev dropbox revision
-     * @return array
+     * @return mixed
      */
     public function download($path, $rev=null)
     {
+        if ($rev === null) {
+            if ($this->isDeleted($path)) return false;
+        }
+
         $mime = \Defr\MimeType::get($path);
         $stream = $this->dropboxManager->download($path, $rev);
         return [$stream, $mime];
     }
 
     /**
-     * Create shared link for path
+     * Create shared link for path, returns false if file deleted
      *
      * @param  string $path dropbox file
-     * @return string
+     * @return mixed
      */
     public function createSharedLink($path)
     {
+        if ($this->isDeleted($path)) return false;
+
         $object = $this->dropboxManager->createSharedLink($path);
-        
-        return $object->url;
+        if ($object)
+            return $object->url;
+
+        return false;
+    }
+
+    /**
+     * Get if the file is deleted
+     *
+     * @param  string $path dropbox file
+     * @return bool
+     */
+    public function isDeleted($path)
+    {
+        return $this->dbStorageManager->isDeleted($path);
     }
 
     /**
