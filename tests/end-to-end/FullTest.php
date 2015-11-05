@@ -14,6 +14,7 @@ class FullTest extends LaravelTestCase
         $app['config']->set('docstore.access_token', '');
     }
 
+
     public function testAll()
     {
         if (!Config::get('docstore.access_token')) return;
@@ -24,6 +25,9 @@ class FullTest extends LaravelTestCase
         $this->assertTrue($result);
         list($content, $mime) = $documentStore->download('/path/file.txt');
         $this->assertEquals($content, "v1 file\n");
+        
+        $url = $documentStore->createSharedLink('/path/file.txt');
+        $this->assertNotEmpty($url);
 
         $result = $documentStore->update('/path/file.txt', __DIR__.'/file2.txt');
         $this->assertTrue($result);
@@ -51,9 +55,16 @@ class FullTest extends LaravelTestCase
         
         $result = $documentStore->delete('/path/file.txt');
         $this->assertTrue($result);
+        $result = $documentStore->delete('/path/file.txt');
+        $this->assertFalse($result);
 
         $revisions = $documentStore->revisions('/path/file.txt');
         $type = $revisions[2]['type'];
         $this->assertEquals($type, 'D');
+
+        $result = $documentStore->restore('/path/file.txt', $rev2);
+        $this->assertTrue($result);
+        list($content, $mime) = $documentStore->download('/path/file.txt');
+        $this->assertEquals($content, "v2 file\n");
     }
 }
