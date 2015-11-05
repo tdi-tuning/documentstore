@@ -61,6 +61,11 @@ class FullTest extends LaravelTestCase
         $revisions = $documentStore->revisions('/path/file.txt');
         $type = $revisions[2]['type'];
         $this->assertEquals($type, 'D');
+        $this->assertTrue($documentStore->isDeleted('/path/file.txt'));
+        $this->assertFalse($documentStore->download('/path/file.txt'));
+        $this->assertFalse($documentStore->createSharedLink('/path/file.txt'));
+        list($content, $mime) = $documentStore->download('/path/file.txt', $rev2);
+        $this->assertEquals($content, "v2 file\n");
 
         $result = $documentStore->restore('/path/file.txt', $rev2);
         $this->assertTrue($result);

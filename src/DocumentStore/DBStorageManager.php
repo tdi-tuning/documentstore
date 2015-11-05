@@ -75,6 +75,7 @@ class DBStorageManager
     public function restore($result, $rev)
     {
         $file = File::where('dp_id', $result->id)->first();
+        if (!$file) return false;
         $rev  = $file->revisions()->where('rev', $rev)->first();
         $file->revision_id = $rev->id;
         $file->save();
@@ -101,7 +102,22 @@ class DBStorageManager
      */
     public function currentRevision($path)
     {
-        return File::where('path', $path)->first()->revision->rev;
+        $file = File::where('path', $path)->first();
+        if (!$file) return false;
+        return $file->revision->rev;
+    }
+
+    /**
+     * Get if the file is deleted
+     *
+     * @param  string $path dropbox file
+     * @return bool
+     */
+    public function isDeleted($path)
+    {
+        $file = File::where('path', $path)->first();
+        if (!$file) return false;
+        return $file->revision->type === 'D';
     }
 
     /**
