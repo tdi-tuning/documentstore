@@ -10,6 +10,7 @@ class DBStorageManager
      * Create record of new file
      *
      * @param  object $result dropbox response
+     * @param  object $meta Meta Eloquent object
      * @return bool
      */
     public function create($result, $meta=null)
@@ -48,6 +49,7 @@ class DBStorageManager
      * Add an update revision
      *
      * @param  object $result dropbox response
+     * @param  object $meta Meta Eloquent object
      * @return bool
      */
     public function update($result, $meta=null)
@@ -59,10 +61,12 @@ class DBStorageManager
      * Add a delete revision
      *
      * @param  object $result dropbox response
+     * @param  object $meta Meta Eloquent object
      * @return bool
      */
     public function delete($result, $meta=null)
     {
+        $result->rev = substr(str_shuffle(time().str_random(10), 0, 12));
         return $this->newRevision($result, 'D', $meta);
     }
 
@@ -147,6 +151,7 @@ class DBStorageManager
      *
      * @param  object $result dropbox response
      * @param  string $type revision type
+     * @param  object $meta Meta Eloquent object
      * @return bool
      */
     private function newRevision($result, $type, $meta=null)
