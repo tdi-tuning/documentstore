@@ -14,7 +14,6 @@ class FullTest extends LaravelTestCase
         $app['config']->set('docstore.access_token', '');
     }
 
-
     public function testAll()
     {
         if (!Config::get('docstore.access_token')) return;

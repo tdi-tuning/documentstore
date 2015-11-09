@@ -66,7 +66,6 @@ class DBStorageManager
      */
     public function delete($result, $meta=null)
     {
-        $result->rev = substr(str_shuffle(time().str_random(10)), 0, 12);
         return $this->newRevision($result, 'D', $meta);
     }
 

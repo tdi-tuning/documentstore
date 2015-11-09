@@ -20,7 +20,6 @@ class CreateRevisionsTable extends Migration
             $table->enum('type', ['C', 'U', 'D']);
             $table->integer('meta_id')->nullable();
             $table->timestamps();
-            $table->unique(['file_id', 'rev']);
         });
     }
     /**
