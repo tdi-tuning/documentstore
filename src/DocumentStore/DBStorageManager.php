@@ -77,7 +77,7 @@ class DBStorageManager
      */
     public function restore($result, $rev)
     {
-        $file = File::where('dp_id', $result->id)->first();
+        $file = File::where('path', $result->path_lower)->first();
         if (!$file) return false;
         $rev  = $file->revisions()->where('rev', $rev)->first();
         $file->revision_id = $rev->id;
@@ -155,7 +155,7 @@ class DBStorageManager
      */
     private function newRevision($result, $type, $meta=null)
     {
-        $file = File::where('dp_id', $result->id)->first();
+        $file = File::where('path', $result->path_lower)->first();
 
         \DB::beginTransaction();
 
