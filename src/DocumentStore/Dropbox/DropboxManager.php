@@ -151,7 +151,6 @@ class DropboxManager
          $isJson=false, $isStream=false, $useHeader=false, $isJsonResponse=true)
     {
         $response = $this->httpHandler->post($url, $params, $headers, $body, $isJson, $isStream, $useHeader);
-        
         if ($isJsonResponse) {
             $jsonResponse = json_decode($response->getBody());
             if (isset($jsonResponse->error))
