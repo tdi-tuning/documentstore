@@ -1,12 +1,19 @@
 <?php
 
 require_once __DIR__.'/../LaravelTestCase.php';
-
-use DocumentStore\Models\File;
+require_once __DIR__.'/../Meta.php';
 
 
 class FullTest extends LaravelTestCase
 {
+    public function setUp()
+    {
+        parent::setUp();
+        $this->artisan('migrate', [
+            '--database' => 'testbench',
+            '--realpath' => realpath(__DIR__.'/../migrations')
+        ]);
+    }
 
     protected function getEnvironmentSetUp($app)
     {
@@ -14,61 +21,94 @@ class FullTest extends LaravelTestCase
         $app['config']->set('docstore.access_token', '');
     }
 
+    public function testCreateDelete()
+    {
+        if (!Config::get('docstore.access_token')) return;
+        
+        $meta = new Meta;
+        $meta->user_id = 1;
+        $result = DocumentStore::create('/path_dir/file1.txt', __DIR__.'/file1.txt', $meta);
+        $this->assertTrue($result);
+
+        $meta = new Meta;
+        $meta->user_id = 2;
+        $result = DocumentStore::delete('/path_dir/file1.txt', $meta);
+        $this->assertTrue($result);
+
+        $revisions = DocumentStore::revisions('/path_dir/file1.txt');
+        $this->assertEquals(count($revisions), 2);
+        $this->assertEquals($revisions[0]['type'], 'C');
+        $this->assertEquals($revisions[1]['type'], 'D');
+
+        $this->assertTrue(DocumentStore::isDeleted('/path_dir/file1.txt'));
+    }
+
     public function testAll()
     {
         if (!Config::get('docstore.access_token')) return;
         
-        $documentStore = App::make('DocumentStore\DocumentStore');
-
-        $result = $documentStore->create('/path/file.txt', __DIR__.'/file1.txt');
+        $meta = new Meta;
+        $meta->user_id = 1;
+        $result = DocumentStore::create('/path_dir/file2.txt', __DIR__.'/file1.txt', $meta);
         $this->assertTrue($result);
-        list($content, $mime) = $documentStore->download('/path/file.txt');
+
+        list($content, $mime) = DocumentStore::download('/path_dir/file2.txt');
         $this->assertEquals($content, "v1 file\n");
         
-        $url = $documentStore->createSharedLink('/path/file.txt');
+        $url = DocumentStore::createSharedLink('/path_dir/file2.txt');
         $this->assertNotEmpty($url);
 
-        $result = $documentStore->update('/path/file.txt', __DIR__.'/file2.txt');
+        $meta = new Meta;
+        $meta->user_id = 2;
+        $result = DocumentStore::update('/path_dir/file2.txt', __DIR__.'/file2.txt', $meta);
         $this->assertTrue($result);
-        list($content, $mime) = $documentStore->download('/path/file.txt');
+        
+        list($content, $mime) = DocumentStore::download('/path_dir/file2.txt');
         $this->assertEquals($content, "v2 file\n");
 
-        $revisions = $documentStore->revisions('/path/file.txt');
+        $revisions = DocumentStore::revisions('/path_dir/file2.txt');
         $rev1 = $revisions[0]['rev'];
         $rev2 = $revisions[1]['rev'];
 
-        $result = $documentStore->restore('/path/file.txt', $rev1);
+        $result = DocumentStore::restore('/path_dir/file2.txt', $rev1);
         $this->assertTrue($result);
-        list($content, $mime) = $documentStore->download('/path/file.txt');
+        list($content, $mime) = DocumentStore::download('/path_dir/file2.txt');
         $this->assertEquals($content, "v1 file\n");
 
-        $result = $documentStore->restore('/path/file.txt', $rev2);
+        $result = DocumentStore::restore('/path_dir/file2.txt', $rev2);
         $this->assertTrue($result);
-        list($content, $mime) = $documentStore->download('/path/file.txt');
+        list($content, $mime) = DocumentStore::download('/path_dir/file2.txt');
         $this->assertEquals($content, "v2 file\n");
 
-        list($content, $mime) = $documentStore->download('/path/file.txt', $rev1);
+        list($content, $mime) = DocumentStore::download('/path_dir/file2.txt', $rev1);
         $this->assertEquals($content, "v1 file\n");
-        list($content, $mime) = $documentStore->download('/path/file.txt', $rev2);
+        list($content, $mime) = DocumentStore::download('/path_dir/file2.txt', $rev2);
         $this->assertEquals($content, "v2 file\n");
         
-        $result = $documentStore->delete('/path/file.txt');
+        $meta = new Meta;
+        $meta->user_id = 3;
+        $result = DocumentStore::delete('/path_dir/file2.txt', $meta);
         $this->assertTrue($result);
-        $result = $documentStore->delete('/path/file.txt');
+
+        $meta = new Meta;
+        $meta->user_id = 3;
+        $result = DocumentStore::delete('/path_dir/file2.txt', $meta);
         $this->assertFalse($result);
 
-        $revisions = $documentStore->revisions('/path/file.txt');
-        $type = $revisions[2]['type'];
-        $this->assertEquals($type, 'D');
-        $this->assertTrue($documentStore->isDeleted('/path/file.txt'));
-        $this->assertFalse($documentStore->download('/path/file.txt'));
-        $this->assertFalse($documentStore->createSharedLink('/path/file.txt'));
-        list($content, $mime) = $documentStore->download('/path/file.txt', $rev2);
+        $revisions = DocumentStore::revisions('/path_dir/file2.txt');
+        $this->assertEquals($revisions[0]['type'], 'C');
+        $this->assertEquals($revisions[1]['type'], 'U');
+        $this->assertEquals($revisions[2]['type'], 'D');
+
+        $this->assertTrue(DocumentStore::isDeleted('/path_dir/file2.txt'));
+        $this->assertFalse(DocumentStore::download('/path_dir/file2.txt'));
+        $this->assertFalse(DocumentStore::createSharedLink('/path_dir/file2.txt'));
+        list($content, $mime) = DocumentStore::download('/path_dir/file2.txt', $rev2);
         $this->assertEquals($content, "v2 file\n");
 
-        $result = $documentStore->restore('/path/file.txt', $rev2);
+        $result = DocumentStore::restore('/path_dir/file2.txt', $rev2);
         $this->assertTrue($result);
-        list($content, $mime) = $documentStore->download('/path/file.txt');
+        list($content, $mime) = DocumentStore::download('/path_dir/file2.txt');
         $this->assertEquals($content, "v2 file\n");
     }
 }

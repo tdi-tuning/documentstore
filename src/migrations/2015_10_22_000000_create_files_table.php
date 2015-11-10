@@ -15,7 +15,6 @@ class CreateFilesTable extends Migration
     {
         Schema::create('docstore_files', function(Blueprint $table) {
             $table->increments('id');
-            $table->string('dp_id');
             $table->string('path');
             $table->integer('revision_id')->nullable();
             $table->timestamps();

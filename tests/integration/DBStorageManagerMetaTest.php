@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__.'/../LaravelTestCase.php';
-require_once 'Meta.php';
+require_once __DIR__.'/../Meta.php';
 
 use DocumentStore\DBStorageManager;
 use DocumentStore\Models\File;
@@ -16,25 +16,24 @@ class DBStorageManagerMetaTest extends LaravelTestCase
         parent::setUp();
         $this->artisan('migrate', [
             '--database' => 'testbench',
-            '--realpath' => realpath(__DIR__.'/migrations'),
+            '--realpath' => realpath(__DIR__.'/../migrations'),
         ]);
     }
 
     public function testCreateWithMeta()
     {
         $meta = new Meta;
-        $meta->user_id = 12;
+        $meta->user_id = 1;
 
         $dbStorageManager = App::make('DocumentStore\DBStorageManager');
         $result = $dbStorageManager->create((object) [
             "path_lower" => "/homework/math/prime_numbers.txt",
-            "rev" => "a1c10ce0dd78",
-            "id" => "id:a4ayc_80_OEAAAAAAAAAXw"
+            "rev" => "a1c10ce0dd78"
         ], $meta);
         $this->assertTrue($result);
         $file = File::find(1);
         $revision = $file->revisions->first();        
-        $this->assertEquals($revision->meta->user_id, 12);
+        $this->assertEquals($revision->meta->user_id, 1);
     }
 
     public function testRevisionsWithMeta()
@@ -50,8 +49,7 @@ class DBStorageManagerMetaTest extends LaravelTestCase
         $dbStorageManager = App::make('DocumentStore\DBStorageManager');
         $result = $dbStorageManager->create((object) [
             "path_lower" => "/homework/math/prime_numbers.txt",
-            "rev" => "a1c10ce0dd78",
-            "id" => "id:a4ayc_80_OEAAAAAAAAAXw"
+            "rev" => "a1c10ce0dd78"
         ], $meta);
         $this->assertTrue($result);
         $revisions = $dbStorageManager->revisions("/homework/math/prime_numbers.txt", ['meta.user']);
