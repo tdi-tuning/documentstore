@@ -24,13 +24,11 @@ class ServiceProviderTest extends LaravelTestCase
         $mock = new MockHandler([
             new Response(200, [], json_encode([
                 "path_lower" => "/homework/math/prime_numbers.txt",
-                "rev" => "a1c10ce0dd78",
-                "id" => "id:a4ayc_80_OEAAAAAAAAAXw"
+                "rev" => "a1c10ce0dd78"
             ])),
             new Response(200, [], json_encode([
                 "path_lower" => "/homework/math/prime_numbers.txt",
-                "rev" => "a1c10ce0dd79",
-                "id" => "id:a4ayc_80_OEAAAAAAAAAXw"
+                "rev" => "a1c10ce0dd79"
             ]))
         ]);
         $stack = HandlerStack::create($mock);
@@ -70,7 +68,6 @@ class ServiceProviderTest extends LaravelTestCase
         $file = File::find(1);
         $revision = $file->revisions->first();
         $this->assertEquals($file->path, '/homework/math/prime_numbers.txt');
-        $this->assertEquals($file->dp_id, 'id:a4ayc_80_OEAAAAAAAAAXw');
         $this->assertEquals($revision->rev, 'a1c10ce0dd78');
         $this->assertEquals($revision->type, 'C');
         $this->assertEquals($revision->id, $file->revision_id);

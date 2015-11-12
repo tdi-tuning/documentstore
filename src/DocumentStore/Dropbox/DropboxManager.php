@@ -157,6 +157,7 @@ class DropboxManager
                 return false;
             return $jsonResponse;
         }
-        return $response->getBody()->getContents();
+        $res = $response->getBody()->getContents();
+        return $res;
     }
 }

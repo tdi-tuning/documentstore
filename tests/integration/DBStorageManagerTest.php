@@ -13,14 +13,12 @@ class DBStorageManagerTest extends LaravelTestCase
         $dbStorageManager = new DBStorageManager;
         $result = $dbStorageManager->create((object) [
             "path_lower" => "/homework/math/prime_numbers.txt",
-            "rev" => "a1c10ce0dd78",
-            "id" => "id:a4ayc_80_OEAAAAAAAAAXw"
+            "rev" => "a1c10ce0dd78"
         ]);
         $this->assertTrue($result);
         $file = File::find(1);
         $revision = $file->revisions->first();
         $this->assertEquals($file->path, '/homework/math/prime_numbers.txt');
-        $this->assertEquals($file->dp_id, 'id:a4ayc_80_OEAAAAAAAAAXw');
         $this->assertEquals($revision->rev, 'a1c10ce0dd78');
         $this->assertEquals($revision->type, 'C');
         $this->assertEquals($revision->id, $file->revision_id);
@@ -31,14 +29,12 @@ class DBStorageManagerTest extends LaravelTestCase
         $dbStorageManager = new DBStorageManager;
         $result = $dbStorageManager->create((object) [
             "path_lower" => "/homework/math/prime_numbers.txt",
-            "rev" => "a1c10ce0dd78",
-            "id" => "id:a4ayc_80_OEAAAAAAAAAXw"
+            "rev" => "a1c10ce0dd78"
         ]);
         $this->assertTrue($result);
         $result = $dbStorageManager->update((object) [
             "path_lower" => "/homework/math/prime_numbers.txt",
-            "rev" => "a1c10ce0dd79",
-            "id" => "id:a4ayc_80_OEAAAAAAAAAXw"
+            "rev" => "a1c10ce0dd79"
         ]);
         $this->assertTrue($result);
         $file = File::find(1);
@@ -55,13 +51,11 @@ class DBStorageManagerTest extends LaravelTestCase
         $dbStorageManager = new DBStorageManager;
         $dbStorageManager->create((object) [
             "path_lower" => "/homework/math/prime_numbers.txt",
-            "rev" => "a1c10ce0dd78",
-            "id" => "id:a4ayc_80_OEAAAAAAAAAXw"
+            "rev" => "a1c10ce0dd78"
         ]);
         $dbStorageManager->update((object) [
             "path_lower" => "/homework/math/prime_numbers.txt",
-            "rev" => "a1c10ce0dd79",
-            "id" => "id:a4ayc_80_OEAAAAAAAAAXw"
+            "rev" => "a1c10ce0dd79"
         ]);
         $file = File::find(1);
         $revisions = $file->revisions;

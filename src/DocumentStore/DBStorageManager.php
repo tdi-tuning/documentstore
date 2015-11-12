@@ -23,7 +23,6 @@ class DBStorageManager
 
             $file = new File;
             $file->path = $result->path_lower;
-            $file->dp_id = $result->id;
             $file->save();
 
             $rev = new Revision;
